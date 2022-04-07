@@ -120,6 +120,12 @@ HexWidget::HexWidget(QWidget *parent)
     connect(actionCopyAddress, &QAction::triggered, this, &HexWidget::copyAddress);
     addAction(actionCopyAddress);
 
+    actionCopyAddress = new QAction(tr("Add Flag"), this);
+    actionCopyAddress->setShortcutContext(Qt::ShortcutContext::WidgetWithChildrenShortcut);
+    actionCopyAddress->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_F);
+    connect(actionCopyAddress, &QAction::triggered, this, &HexWidget::copyAddress);
+    addAction(actionCopyAddress);
+
     actionSelectRange = new QAction(tr("Select range"), this);
     connect(actionSelectRange, &QAction::triggered, this,
             [this]() { rangeDialog.open(cursor.address); });
