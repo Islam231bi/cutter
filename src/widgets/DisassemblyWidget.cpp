@@ -179,6 +179,8 @@ DisassemblyWidget::DisassemblyWidget(MainWindow *main)
                [this]() { moveCursorRelative(false, true); })
     ADD_ACTION(QKeySequence::MoveToPreviousPage, Qt::WidgetWithChildrenShortcut,
                [this]() { moveCursorRelative(true, true); })
+    ADD_ACTION(Qt::Key_Menu, Qt::WidgetWithChildrenShortcut,
+                [this]() { showDisasContextMenu(this->mCtxMenu->pos()); })
 #undef ADD_ACTION
 }
 
